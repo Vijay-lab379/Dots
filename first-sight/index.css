@@ -1,0 +1,158 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Raleway;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-position:center;
+    background-size:cover;
+    backdrop-filter: blur(7px);
+}
+
+/* navbar */
+
+#brand-logo {
+    margin: 4px;
+    height: 30px;
+    border-radius: 50%;
+    }
+
+nav {
+    height: 40px;
+    width: 75vw;
+    border-radius: 30px;
+    margin: 30px 5px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: rgb(255, 230, 213, 0.7); */
+}
+
+nav h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 25px;
+    padding: 1px 8px;   
+    border-radius: 15px;
+    color:#502a2a;
+}
+ 
+nav ul {
+    width:max-content;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #4a4130;
+    padding: 6px 12px;
+    border-radius: 30px;
+}
+
+nav .options {
+    background-color: rgb(238, 237, 237);
+    padding: 10px 22px;
+    border-radius: 40px;
+}
+nav .options a:hover {
+    background-color: #ffffff;
+    /* color: rgb(251, 247, 247); */
+}
+
+nav .contect {
+    color: #291f1f;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* card */
+
+.card {
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align:center ;
+    /* background-color: white; */
+    width: 40vw;
+    min-width: 300px;
+    height:76vh;
+    padding: 2px 30px;
+    color: rgb(69, 28, 28);
+    border-radius: 50px;
+    font-size: large;
+    /* background-color: rgb(255, 255, 255, .19); */
+}
+
+.card h1 {
+    font-size: 60px;
+}
+.card p {
+    /* width: 60vw; */
+    font-size: 20px;
+    font-weight: 450;
+}
+
+#button {
+    font-size: 15px;
+    margin-top: 20px;
+    padding: 5px 20px;
+    border-radius: 80px;
+    background-color: rgb(132, 55, 55);
+    font-weight: 500;
+    color: white;
+    position: relative;
+}
+
+#button::after {
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 100%;
+          bottom: -5px;
+          left: 0;
+          background-color: rgb(12, 12, 12);
+          transform: scaleX(0);
+          transform-origin:left;
+          transition: transform 0.3s ease-in-out
+        }
+#button:hover::after {
+          content: "";
+          transform: scaleX(1);
+        }
+
+footer {
+    width: 100vw;
+    display: flex;
+    font-size: 12px;
+    gap: 90px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 251, 251, 0);
+    height: 40px;
+}
+
+footer a {
+    color: #771212;
+    text-decoration: none;
+}
+
+footer i {
+   padding: 3px;
+}
