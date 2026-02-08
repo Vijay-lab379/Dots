@@ -1,0 +1,23 @@
+So here is my first ever project 
+Started On -5 Feb 2026 
+last Updated - Today
+the Calc 
+- I have designed the base UI, 
+  with Grid layout and appropiate padding and margines
+
+Now ahead I am gonna add following features
+
+- Tacking input into on display by buttons
+  I use string functions for these ineractions
+
+- next step will be to make Display keyboard responsive
+  To do calculations using keyboard and answer via 'Enter key'
+
+- I would love to have a Click sound when key pressed 
+
+---------------------
+So in the first step I got those obstackles to tackle
+ - del can't push last entry, string doesn't have array method
+   need to explore string methods
+   - it got fixed using slice(0,-1)
+ - log is not predefined, so I am replacing it with 
