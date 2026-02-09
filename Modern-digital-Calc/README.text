@@ -1,0 +1,42 @@
+So here is my first ever project 
+Started On -5 Feb 2026 
+last Updated - 9 Feb 2026
+
+----------
+Version Updates -
+#🔢Digital-Calc 
+- I have designed the base UI,  with Grid layout and appropiate padding and margines
+
+Now ahead I am gonna add following features
+
+✅ Tacking input into on display by buttons
+   -I use string functions for these ineractions
+
+   -8Feb26 - Completed version v.0
+
+- next step will be to make Display keyboard responsive
+  To do calculations using keyboard and answer via 'Enter key'
+
+- I would love to have a Click sound when key pressed 
+
+
+
+
+---------------------
+#🐞Bug Fixes
+
+6th Feb 2026
+ - Del can't push last entry, string doesn't have array method
+   need to explore string methods
+   - it got fixed using slice(0,-1)
+ - log, √  is not predefined, 
+
+8th Feb 2026 
+- log & √ logic added
+- Del logic created
+
+9th Feb 2026
+- fixed Del key logic to remove "√(" as for "log("
+- removed auto "*" addition preceeding (
+- √, (, log maded evalutable when preceeding char is num or )
+

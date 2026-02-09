@@ -1,0 +1,165 @@
+/* removing browser default styling And Setting default styles*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+h1 {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-family:Sora;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Using flex-layout for Calc center alignment */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(50deg, rgb(50, 50, 50), rgb(99, 99, 99));
+    height: 100vh;
+    position: relative;
+}
+
+.Calc {
+    background-color: rgb(39, 39, 39);
+    padding: 18px;
+    border-radius: 20px;
+    width: 320px;
+    margin: 10px;
+    box-shadow: -4px 3px 12px rgb(0, 0, 0);
+}
+
+.display {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 36px;
+    font-weight: 550;
+    text-align: right;
+
+    min-height: 58px;
+    margin: 28px 3px 18px;
+    padding: 10px 20px 0px 10px;
+
+    caret-color: black;
+    /* user-select:all; */
+    overflow-x: auto;
+    /* Show scrollbar only when numbers are too long */
+    overflow-y: hidden;
+    /* Prevent vertical scrolling */
+    white-space: nowrap;
+    /* Keep all numbers on one line */
+
+}
+
+.display::-webkit-scrollbar {
+    display: none;
+}
+
+.keys {
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    column-gap: 0px;
+    grid-auto-rows: auto;
+    align-items: baseline;
+}
+
+.keys ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Shaping keys Round*/
+li {
+    box-shadow: -3px 3px 2px rgb(1, 1, 1);
+    outline: none;
+    /* Remove focus outline */
+    user-select: none;
+    /* Prevent text selection */
+    margin: 1.5px;
+    padding: 12px 0px;
+    text-align: center;
+    width: 45px;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 40%;
+    margin: 1.5px;
+    background-color: #ffd900;
+}
+
+/* Addng li hover effect */
+.keys li:hover {
+    opacity: 0.95;
+}
+
+.command {
+    li {
+        background-color: rgb(250, 186, 66);
+    }
+
+    grid-column: 1 / 6;
+    grid-row: 1;
+    gap: 3px;
+}
+
+.number {
+    grid-column: 1 / 4;
+    grid-row: 2;
+}
+
+.operator {
+    li {
+        background-color: #f7f7d1;
+    }
+
+    grid-column: 4 / 6;
+    grid-row: 2;
+}
+
+body>i {
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(154, 153, 153);
+}
+
+#code {
+    color: rgb(174, 172, 172);
+    font-size: 30px;
+    position: absolute;
+    left: 40px;
+    align-self: center;
+    bottom: 30px;
+
+    :hover {
+        color: rgb(179, 178, 178);
+        font-size: 30px;
+        /* padding-bottom: 8px; */
+        rotate: -10deg;
+    }
+}
+
+#in {
+    color: rgb(174, 172, 172);
+    font-size: 25px;
+    position: absolute;
+    right: 40px;
+    align-self: center;
+    bottom: 30px;
+
+    :hover {
+        color: rgb(236, 230, 230);
+        font-size: px;
+        rotate: 5deg;
+    }
+}
