@@ -7,6 +7,7 @@ let js_evaluatable = (string) => {
     // √, log logic 
     string = string.replace(/√\(/g, "Math.sqrt(")
         .replace(/(\d)\(/g, "$1*(")
+        .replace(/\dlog/g,"$1*log")
         .replace(/log\(/g, "Math.log10(")
         .replace(/\)(\d)/g, ")*$1")
         .replace(/\)\(/g, ")*(");
@@ -30,7 +31,7 @@ buttons.forEach((button) => {
                     console.log("Converted:", expresion);
                     let result = new Function('return ' + expresion)()
                     console.log("Result:", result);
-                    screen.textContent = screen.textContent != "" ? result : "";
+                    screen.textContent = screen.textContent != (""||NaN) ? result : "";
                 }
                 catch {
                     screen.textContent = "Syntax Error"
