@@ -1,4 +1,11 @@
 
+// Better Error Handling Would Include:
+// ✅ Validate input before processing
+// ✅ Check for edge cases (division by zero, empty input)
+// ✅ More specific error messages instead of just "Syntax Error"
+// ✅ Null/undefined checks for DOM elements
+// ✅ Try-catch with error logging for debugging
+
 let buttons = document.querySelectorAll("li")
 let screen = document.querySelector(".display")
 
