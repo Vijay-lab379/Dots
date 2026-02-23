@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     questions[currentQuestionIndex].options.forEach(option => {
       const li = document.createElement('li')
       li.innerText = option
+      li.addEventListener('click', () => li.classList.toggle('selected'))
       li.addEventListener('click', () => selectedOption(option))
       Options.appendChild(li)
     })

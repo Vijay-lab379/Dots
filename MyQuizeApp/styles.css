@@ -47,6 +47,10 @@ li:hover {
   background-color: #6200ea;
 }
 
+.selected {
+  background-color: #5404c5;
+}
+
 button {
   padding: 10px;
   background-color: #6200ea;
