@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+ /*What do I want to add?
+    Single right 
+    Single marking 1 Q - 1Marking
+    Previous Q option with selected Q
+ */
+
+
   //grading the elements
   const startBtn = document.getElementById('start-btn')
   const QuestionBox = document.getElementById('question-container')
