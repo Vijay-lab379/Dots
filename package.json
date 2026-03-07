@@ -1,0 +1,20 @@
+{
+  "name": "progmanagement",
+  "version": "1.0.0",
+  "description": "A project management app for begginers",
+  "main": "index.js",
+  "scripts": {
+    "begin": "node index.js"
+  },
+  "keywords": [
+    "backend",
+    "API",
+    "learning",
+    "chai_and_code"
+  ],
+  "author": "Vijay B",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.8.1"
+  }
+}
