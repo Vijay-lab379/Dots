@@ -3,14 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 }
 
 h1 {
     font-size: 20px;
     color: rgb(255, 255, 255);
-    font-family:Sora;
+    font-family: Sora;
     font-weight: 500;
     margin-bottom: 20px;
 }
@@ -25,8 +25,8 @@ body {
     background: linear-gradient(50deg, rgb(60, 60, 60), rgb(99, 99, 99));
     position: relative;
 }
- 
-.Calc{
+
+.Calc {
     color: white;
     font-size: 20px;
     background-color: rgb(53, 53, 53);
@@ -41,43 +41,44 @@ body {
 
 .display {
     grid-column: 1/6;
-    text-align:end;
+    text-align: end;
     padding-top: 50px;
-    padding-right: 30px ;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-right: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 30px;
     font-weight: normal;
 }
 
-.command{
+.command {
     grid-column: 1/6;
     background-color: #ffbb3d;
     color: black;
 }
 
-.number{
+.number {
     grid-column: 1/4;
 }
 
 .operator {
     grid-column: 4/6;
 }
-ul{
+
+ul {
     display: flex;
     list-style: none;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     margin: none;
 }
 
 li {
-    width: 60px; height: 60px; 
+    width: 60px;
+    height: 60px;
     align-content: center;
     text-align: center;
 }
 
-li:hover{
-    
-}
+li:hover {}
+
 #Ans {
     width: 120px;
     border-radius: 15px;
