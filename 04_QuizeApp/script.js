@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultBox = document.getElementById('result-container')
   const scoreDisplay = document.getElementById('score')
   const restart = document.getElementById('restart-btn')
+  const Qcount = document.getElementById("count")
 
 
   const questions = [
@@ -94,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prevBtn.classList.remove('hidden')
     }
     else {
+      Qcount.classList.add('hidden')
       QuestionBox.classList.add('hidden')
       nextBtn.classList.add('hidden')
       resultBox.classList.remove('hidden')
@@ -118,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showquestion() {
+    Qcount.classList.remove('hidden')
+    Qcount.innerText = `${currentQuestionIndex + 1} / ${questions.length}`
     const SelectedIndex = questions[currentQuestionIndex].OptionSelected
 
     //IN-case Q is previously attempted 'Next' should be visible
@@ -156,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function restartQuiz() {
+    Qcount.classList.add('hidden')
     currentQuestionIndex = 0
     score = 0
     resultBox.classList.add('hidden')

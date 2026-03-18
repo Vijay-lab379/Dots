@@ -40,6 +40,10 @@ ul {
   padding: 0;
 }
 
+#count {
+  color: rgb(149, 149, 149);
+}
+
 li {
   
   background-color: #333333;
