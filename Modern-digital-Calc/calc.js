@@ -14,7 +14,7 @@ let js_evaluatable = (string) => {
     string = string
         .replace(/√\(/g, "Math.sqrt(")
         .replace(/(\d)\(/g, "$1*(")
-        .replace(/(\d)log/g, "$1*log") // Added () around \d to define $1
+        .replace(/(\d|\))log\(/g, "$1*Math.log") // Added () around \d to define $1
         .replace(/log\(/g, "Math.log10(")
         .replace(/\)(\d)/g, ")*$1")
         .replace(/\)\(/g, ")*(");
@@ -32,11 +32,11 @@ buttons.forEach((button) => {
                 screen.textContent = ""
                 break;
             case "=":
-                try {
+                 try {
                     console.log("Original:", screen.textContent);
                     let expresion = js_evaluatable(screen.textContent)
                     console.log("Converted:", expresion);
-                    let result = new Function('return ' + expresion)()
+                    let result =  typeof(Number(expresion)) === "number" && !isNaN(Number(expresion)) ? expresion : new Function('return ' + expresion)() || null;
                     console.log("Result:", result);
                     screen.textContent = screen.textContent != ("" || NaN) ? result : "";
                 }

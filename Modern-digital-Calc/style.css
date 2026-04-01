@@ -10,7 +10,7 @@
 h1 {
     font-size: 20px;
     color: rgb(255, 255, 255);
-    font-family: Sora;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 500;
     margin-bottom: 20px;
 }
@@ -28,39 +28,46 @@ body {
 
 .Calc {
     color: white;
-    font-size: 20px;
-    background-color: rgb(53, 53, 53);
-    border-radius: 15px;
+    font-size: 21px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 25px;
 
     display: grid;
-    grid-template-columns: repeat(5, 60px);
+    grid-template-columns: repeat(5, 63px);
     grid-template-rows: 100px repeat(5, 60px);
     grid-auto-rows: 60px;
-    column-gap: 0px;
+    column-gap: none;
 }
 
 .display {
     grid-column: 1/6;
     text-align: end;
-    padding-top: 50px;
+    font-family: monospace;
+    font-size: 32px;
+    border-radius: 25px 25px 0px 0px;
     padding-right: 30px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 30px;
-    font-weight: normal;
+    padding-top: 40px;
+    overflow: hidden;
 }
 
 .command {
     grid-column: 1/6;
-    background-color: #ffbb3d;
-    color: black;
+    background-color: #626060;
+    color: rgb(255, 248, 248);
+    border-radius: 4px;
 }
 
 .number {
     grid-column: 1/4;
+    grid-row: 3/7;
+    background-color: #353535;
+    border-radius: 0px 10px 15px 25px;
 }
 
 .operator {
     grid-column: 4/6;
+    border-radius: 10px 0px 15px 25px;
+    grid-row: 3/7;
 }
 
 ul {
@@ -75,15 +82,20 @@ li {
     height: 60px;
     align-content: center;
     text-align: center;
+    border-radius: 25px;
 }
 
 li:hover {
-    background-color:orange;
+    font-size: 20px;
+    background-color: rgb(60, 60, 60);
+    font-weight: 400;
 }
 
 #Ans {
-    width: 120px;
-    border-radius: 15px;
+
+    width: 130px;
+    background-color: rgb(58, 57, 57);
+    border-radius: 10px 10px 25px 15px;
 }
 
 body>i {
@@ -101,10 +113,9 @@ body>i {
     bottom: 30px;
 
     :hover {
-        color: rgb(179, 178, 178);
-        font-size: 30px;
-        /* padding-bottom: 8px; */
-        rotate: -10deg;
+        color: rgb(236, 230, 230);
+        font-size: px;
+        rotate: -5deg;
     }
 }
 
