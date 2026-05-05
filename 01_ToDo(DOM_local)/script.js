@@ -26,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         savetask()
         rendertask(task)
         taskInput.value = ""
-    })
-
-    
+    }) 
 
     function rendertask(task) {
         const li = document.createElement('li')
@@ -50,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             li.remove()
             savetask()
         })
+        
         tasklist.appendChild(li) 
     }
 
