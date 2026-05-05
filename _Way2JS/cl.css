@@ -1,0 +1,808 @@
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --cream: #f5ede6;
+  --cream2: #ede0d8;
+  --cream3: #e2d0c6;
+  --brown: #6b4c3b;
+  --brown2: #4a3028;
+  --brown-lt: #9c7060;
+  --text: #2e1f18;
+  --muted: #9c8278;
+  --border: #d4bfb5;
+  --border2: #c4a898;
+  --white: #fdf8f5;
+  --red-soft: #c0574a;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+html,
+body {
+  height: 100vh;
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Epilogue', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ═══════════════════════════════════════
+   PAGE WRAPPER
+═══════════════════════════════════════ */
+#page {
+  min-height: 100vh;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ═══════════════════════════════════════
+   TOPBAR  — "VIJAY B's Dashboard"
+═══════════════════════════════════════ */
+#topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1.5px solid var(--border2);
+  margin-bottom: 20px;
+}
+
+#dashboard-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  letter-spacing: -0.3px;
+  color: var(--brown2);
+}
+
+#dashboard-title span {
+  /* user name part */
+  font-style: italic;
+}
+
+/* ── Avatar + dropdown ── */
+#avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#avatar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border2);
+  background: var(--cream3);
+  color: var(--brown2);
+  font-family: 'Instrument Serif', serif;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+  /* JS: toggle #user-dropdown .open on click */
+}
+
+#avatar-btn:hover {
+  border-color: var(--brown);
+}
+
+/* Dropdown card */
+#user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 220px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 28px rgba(80, 40, 20, 0.14);
+  padding: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 100;
+}
+
+#avatar-wrapper:hover #user-dropdown,
+#avatar-wrapper:focus-within #user-dropdown,
+#user-dropdown.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+
+.dropdown-user-info .du-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cream3);
+  border: 1.5px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-size: 13px;
+  color: var(--brown2);
+}
+
+.dropdown-user-info .du-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brown2);
+}
+
+.dropdown-user-info .du-email {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* User list (members) */
+#dropdown-member-list {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+#dropdown-member-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 4px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text);
+  transition: background 0.12s;
+}
+
+#dropdown-member-list li:hover {
+  background: var(--cream2);
+}
+
+.member-radio {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border2);
+  background: transparent;
+  flex-shrink: 0;
+  /* JS: add class .selected to fill it */
+}
+
+.member-radio.selected {
+  background: var(--brown);
+  border-color: var(--brown);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 8px 0;
+}
+
+#btn-logout {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  color: var(--red-soft);
+  transition: background 0.12s;
+}
+
+#btn-logout:hover {
+  background: #f9e8e6;
+}
+
+.dropdown-auth-links {
+  display: flex;
+  gap: 16px;
+  padding-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+.dropdown-auth-links a {
+  color: var(--brown);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.12s;
+  /* JS: attach click handlers for register/login */
+}
+
+.dropdown-auth-links a:hover {
+  color: var(--brown2);
+}
+
+.dropdown-auth-links span {
+  color: var(--border2);
+}
+
+/* ═══════════════════════════════════════
+   AUTH FORM PANEL  (hidden by default)
+   JS: remove .hidden to show
+═══════════════════════════════════════ */
+#auth-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(80, 40, 20, 0.16);
+  padding: 28px 24px;
+  z-index: 200;
+  display: none;
+  /* JS: set display:block to show */
+}
+
+#auth-panel.open {
+  display: block;
+}
+
+#auth-panel-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  color: var(--brown2);
+  margin-bottom: 20px;
+}
+
+.auth-field {
+  margin-bottom: 13px;
+  width: 100%;
+  padding: 9px 13px;
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.auth-field input::placeholder {
+  color: var(--muted);
+}
+
+.auth-field input:focus {
+  border-color: var(--brown);
+}
+
+/* Name field — hidden on login, shown on register */
+#auth-field-name {
+  display: none;
+}
+
+#auth-field-name.show {
+  display: block;
+}
+
+#auth-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background: var(--brown2);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+  transition: background 0.15s;
+}
+
+#auth-submit-btn:hover {
+  background: var(--brown);
+}
+
+#auth-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1;
+}
+
+#auth-close-btn:hover {
+  color: var(--text);
+}
+
+#auth-error {
+  font-size: 11px;
+  color: var(--red-soft);
+  min-height: 16px;
+  margin-bottom: 6px;
+}
+
+/* overlay behind auth panel */
+#auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 20, 10, 0.35);
+  z-index: 199;
+  display: none;
+}
+
+#auth-overlay.open {
+  display: block;
+}
+
+/* ═══════════════════════════════════════
+   MAIN DASHBOARD CARD
+═══════════════════════════════════════ */
+#dashboard-card {
+  background: var(--cream2);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+  gap: 16px;
+  min-height: 560px;
+}
+
+/* ── Shared column styles ── */
+.col {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+.col-header {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.col-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  color: var(--brown2);
+}
+
+.col-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.col-body::-webkit-scrollbar {
+  width: 3px;
+}
+
+.col-body::-webkit-scrollbar-thumb {
+  background: var(--border2);
+  border-radius: 2px;
+}
+
+/* ── Small action buttons (Edit / Delete) ── */
+.row-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  border: 1px solid var(--border2);
+  background: var(--cream);
+  color: var(--brown);
+  transition: all 0.12s;
+}
+
+.btn-edit:hover {
+  background: var(--cream3);
+  border-color: var(--brown);
+}
+
+.btn-delete:hover {
+  background: #fbeae8;
+  border-color: var(--red-soft);
+  color: var(--red-soft);
+}
+
+/* ═══════════════════════════════════════
+   COL 1 — PROJECTS
+═══════════════════════════════════════ */
+/* Project item */
+.project-item {
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  background: var(--cream);
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+  /* JS: add .active for selected state */
+}
+
+.project-item:hover {
+  border-color: var(--brown-lt);
+}
+
+.project-item.active {
+  border-color: var(--brown);
+  background: var(--cream2);
+}
+
+.project-item-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brown2);
+  margin-bottom: 8px;
+}
+
+/* Edit/Delete shown inside project item */
+.project-item .row-btns {
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════
+   COL 2 — PROJECT DETAIL
+   (tasks list + notes/comments)
+═══════════════════════════════════════ */
+#col-project .col-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+
+/* Project description block */
+#proj-description-block {
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+#proj-description-text {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Tasks list */
+#tasks-block {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  flex: 1;
+  overflow-y: auto;
+}
+
+#tasks-block-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Task row */
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 2px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.1s;
+  /* JS: add .active for selected */
+}
+
+.task-row:hover {
+  background: var(--cream2);
+}
+
+.task-row.active {
+  background: var(--cream3);
+}
+
+.task-checkbox {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--border2);
+  border-radius: 3px;
+  flex-shrink: 0;
+  background: transparent;
+  /* JS: add .checked class → fill with brown */
+}
+
+.task-checkbox.checked {
+  background: var(--brown);
+  border-color: var(--brown);
+}
+
+.task-row-name {
+  flex: 1;
+  color: var(--text);
+}
+
+.task-row-name.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* Notes / comments block */
+#notes-block {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+#notes-block-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.note-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 4px 2px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.note-row .note-at {
+  color: var(--brown-lt);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+#message {
+  background-color: rgb(237, 201, 201);
+  position: absolute;
+  position: fixed;
+  left: 30px;
+  bottom: 0px;
+  padding: 5px 10px;
+  min-width: 200px;
+  border: solid 2px rgb(66, 5, 5);
+  box-shadow: #e2d0c6 solid 12px 12px;
+  color: rgb(103, 19, 19);
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 7px;
+  display: none;
+
+    transition: bottom 0.4s ease-in-out, opacity 0.4s;
+    overflow: hidden;
+    /* Keeps the progress bar inside the rounded corners */
+
+  }
+
+  #message.show {
+    display: block;
+    bottom: 15px;
+  }
+
+  /* The Progress Line */
+  #message.show::after {
+    content: "";
+    position: absolute;
+    bottom: 1.5px;
+    left: 7px;
+    height: 2px;
+    background: rgb(123, 14, 14);
+    /* Matches your border color */
+    animation: progress 3s linear forwards;
+  }
+
+  @keyframes progress {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: 90%;
+    }
+  }
+
+  /* Add comment button area */
+  #add-comment-area {
+    padding: 12px 14px;
+    flex-shrink: 0;
+  }
+
+  #btn-add-comment {
+    width: 100%;
+    padding: 9px;
+    border: 1.5px solid var(--border2);
+    border-radius: var(--radius-sm);
+    background: var(--cream);
+    color: var(--brown2);
+    font-size: 13px;
+    transition: all 0.15s;
+    /* JS: disable + show tooltip for non-admins */
+  }
+
+  #btn-add-comment:not(:disabled):hover {
+    background: var(--cream3);
+    border-color: var(--brown);
+  }
+
+  #btn-add-comment:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* WhatsApp-style "admin only" bubble */
+  #admin-only-msg {
+    margin-top: 6px;
+    background: #e8ead6;
+    border-radius: 0 8px 8px 8px;
+    padding: 6px 10px;
+    font-size: 11px;
+    color: #5a5c30;
+    display: none;
+    /* JS: set display:block when non-admin */
+    width: fit-content;
+    max-width: 90%;
+    border: 1px solid #d0d2b0;
+  }
+
+  #admin-only-msg.show {
+    display: block;
+  }
+
+  /* ═══════════════════════════════════════
+   COL 3 — TASK DETAIL
+═══════════════════════════════════════ */
+  #col-task .col-header {
+    flex-shrink: 0;
+  }
+
+  #task-detail-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 16px;
+    color: var(--brown2);
+    flex: 1;
+    min-width: 0;
+  }
+
+  #task-description-block {
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  #task-description-text {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Subtasks */
+  #subtasks-block {
+    padding: 12px 14px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  #subtasks-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .subtask-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 2px;
+    font-size: 13px;
+  }
+
+  .subtask-checkbox {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--border2);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: transparent;
+    cursor: pointer;
+    /* JS: add .checked → fill */
+  }
+
+  .subtask-checkbox.checked {
+    background: var(--brown);
+    border-color: var(--brown);
+  }
+
+  .subtask-name {
+    flex: 1;
+    color: var(--text);
+  }
+
+  .subtask-name.done {
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+
+  /* ═══════════════════════════════════════
+   EMPTY STATES
+   (shown when nothing selected)
+═══════════════════════════════════════ */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .empty-state .es-icon {
+    font-size: 28px;
+    opacity: 0.3;
+    margin-bottom: 4px;
+  }
+
+  /* ═══════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════ */
+  .hidden {
+    display: none !important;
+  }

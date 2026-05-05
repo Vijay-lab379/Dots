@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Camp — Dashboard</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Epilogue:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="cl.css">
+</head>
+
+<body>
+  <div id="page">
+    <!-- ══ TOPBAR ══ -->
+    <header id="topbar">
+      <h1 id="dashboard-title">
+        <span id="title-username">Vijay B</span>'s Dashboard
+      </h1>
+      <!-- Avatar + dropdown -->
+      <div id="avatar-wrapper">
+        <button id="avatar-btn" title="Account">
+          <!-- JS: put user initials here -->
+          VB
+        </button>
+
+        <div id="user-dropdown">
+          <!-- Logged-in user info -->
+          <div class="dropdown-user-info">
+            <div class="du-avatar">VB</div>
+            <div>
+              <div class="du-name" id="dropdown-name">Vijay B.</div>
+              <div class="du-email" id="dropdown-email">vijay@gmail.com</div>
+            </div>
+          </div>
+
+          <!-- Project members list -->
+          <!-- JS: populate this list from project members data -->
+          <ul id="dropdown-member-list">
+            <li>
+              <div class="member-radio selected"></div>
+              Tony
+            </li>
+            <li>
+              <div class="member-radio"></div>
+              John
+            </li>
+            <li>
+              <div class="member-radio"></div>
+              Steve
+            </li>
+          </ul>
+
+          <div class="dropdown-divider"></div>
+
+          <button id="btn-logout">log out</button>
+
+          <div class="dropdown-auth-links">
+            <a href="#" id="link-register">register</a>
+            <span>|</span>
+            <a href="#" id="link-login">login</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══ MAIN DASHBOARD CARD ══ -->
+    <div id="dashboard-card">
+
+      <!-- ── COL 1: PROJECTS ── -->
+      <div class="col" id="col-projects">
+        <div class="col-header">
+          <span class="col-title">Projects</span>
+        </div>
+        <ul class="col-body" id="projects-body">
+
+          <!-- JS: render project items here dynamically -->
+          <!-- Example static item (remove when using JS) -->
+          <li class="project-item active" data-project-id="">
+            <h1 class="project-item-name">Project-title</h1>
+            <div class="row-btns">
+              <button class="btn-edit">Edit</button>
+              <button class="btn-delete">Delete</button>
+            </div>
+          </li>
+          <!-- /example -->
+
+        </ul>
+      </div>
+
+
+      <!-- ── COL 2: PROJECT DETAIL ── -->
+      <div class="col" id="col-project">
+        <div class="col-header">
+          <span class="col-title" id="proj-detail-title">Project-Title</span>
+          <!-- JS: show edit/delete only if admin -->
+          <div class="row-btns" id="proj-detail-actions">
+            <button class="btn-edit" id="btn-edit-project">Edit</button>
+            <button class="btn-delete" id="btn-delete-project">Delete</button>
+          </div>
+        </div>
+
+        <div class="col-body">
+
+          <!-- Description -->
+          <div id="proj-description-block">
+            <p id="proj-description-text">
+              <!-- JS: insert project description here -->
+              Description of the project goes here. Short summary of what this project is about.
+            </p>
+          </div>
+
+          <!-- Tasks list -->
+          <div id="tasks-block">
+            <div id="tasks-block-label">Tasks</div>
+
+            <!-- JS: render task rows here -->
+            <!-- Example static rows (remove when using JS) -->
+            <div class="task-row active" data-task-id="">
+              <div class="task-checkbox"></div>
+              <span class="task-row-name">Task-1</span>
+            </div>
+            <div class="task-row" data-task-id="">
+              <div class="task-checkbox checked"></div>
+              <span class="task-row-name done">Task-2</span>
+            </div>
+            <!-- /example -->
+
+          </div>
+
+          <!-- Notes / Comments -->
+          <div id="notes-block">
+            <div id="notes-block-label">Notes &amp; Comments</div>
+
+            <!-- JS: render note rows here -->
+            <!-- Example static rows (remove when using JS) -->
+            <div class="note-row">
+              <span class="note-at">@ comment-1</span>
+            </div>
+            <div class="note-row">
+              <span class="note-at">@ note-1</span>
+            </div>
+            <div class="note-row">
+              <span class="note-at">@ update</span>
+            </div>
+            <!-- /example -->
+
+          </div>
+
+          <!-- Add comment (admin only) -->
+          <div id="add-comment-area">
+            <!--
+            JS logic needed here:
+            - If user role === 'admin'  → enable the button
+            - Else                      → disable button + show #admin-only-msg
+          -->
+            <button id="btn-add-comment" disabled>add a comment</button>
+            <div id="admin-only-msg">
+              🔒 Only admins can add comments.
+            </div>
+          </div>
+
+        </div><!-- /col-body -->
+      </div><!-- /col-project -->
+
+
+      <!-- ── COL 3: TASK DETAIL ── -->
+      <div class="col" id="col-task">
+        <div class="col-header">
+          <span id="task-detail-name">Task Details</span>
+          <!-- JS: show only if admin/proj-admin -->
+          <div class="row-btns" id="task-detail-actions">
+            <button class="btn-edit" id="btn-edit-task">Edit</button>
+            <button class="btn-delete" id="btn-delete-task">Delete</button>
+          </div>
+        </div>
+
+        <!-- Task description -->
+        <div id="task-description-block">
+          <p id="task-description-text">
+            <!-- JS: insert selected task description here -->
+            Click a task on the left to see its details.
+          </p>
+        </div>
+
+        <!-- Subtasks -->
+        <div id="subtasks-block">
+          <div id="subtasks-label">Subtasks</div>
+
+          <!-- JS: render subtask rows here -->
+          <!-- Example static rows (remove when using JS) -->
+          <div class="subtask-row" data-subtask-id="">
+            <div class="subtask-checkbox"></div>
+            <span class="subtask-name">subtask-1</span>
+          </div>
+          <div class="subtask-row" data-subtask-id="">
+            <div class="subtask-checkbox checked"></div>
+            <span class="subtask-name done">subtask-2</span>
+          </div>
+          <!-- /example -->
+
+        </div>
+      </div><!-- /col-task -->
+
+    </div><!-- /dashboard-card -->
+
+  </div><!-- /page -->
+
+  <!-- ══ AUTH OVERLAY + PANEL ══ -->
+  <div id="auth-overlay"></div>
+
+  <div id="auth-panel">
+    <form id="authFrom">
+      <button id="auth-close-btn" title="Close">×</button>
+      <h2 id="auth-panel-title">Register</h2>
+      <div id="auth-error"></div>
+
+      <!-- Name field — shown for register, hidden for login -->
+      <!-- JS: toggle .show on #auth-field-name -->
+      <input class="auth-field" id="auth-field-name" name="username" type="text" placeholder="User Name"
+        autocomplete="name" />
+
+      <input class="auth-field" name="email" type="email" placeholder="Email" autocomplete="email" />
+
+      <input class="auth-field" name="password" type="password" placeholder="Password"
+        autocomplete="current-password" />
+
+      <button id="auth-submit-btn" type="submit">Register</button>
+    </form>
+
+  </div>
+        <div id="message" class="show"></div>
+
+
+  <!--
+═══════════════════════════════════════════════════
+  JS HOOKS CHEATSHEET  (ids & classes to target)
+═══════════════════════════════════════════════════
+
+  TOPBAR
+    #title-username          → set user's display name
+    #avatar-btn              → click → toggle #user-dropdown.open
+    #user-dropdown           → add/remove class "open" to show/hide
+    #dropdown-name           → set logged-in user name
+    #dropdown-email          → set logged-in user email
+    #dropdown-member-list    → render <li> members; add class "selected" to .member-radio
+    #btn-logout              → click handler → logout API call
+    #link-register           → click → open auth panel in register mode
+    #link-login              → click → open auth panel in login mode
+
+  AUTH PANEL
+    #auth-overlay            → add class "open" to show dim bg
+    #auth-panel              → add class "open" to show panel
+    #auth-panel-title        → set "Register" or "Login"
+    #auth-field-name         → add class "show" for register; remove for login
+    #auth-submit-btn         → set text "Register" or "Login"; click handler
+    #auth-close-btn          → click → close panel
+    #auth-error              → set error text from API
+    #input-name              → value for name
+    #input-email             → value for email
+    #input-password          → value for password
+
+  PROJECTS COL
+    #projects-body           → render .project-item elements inside
+    .project-item            → add class "active" for selected project
+    .project-item[data-project-id] → set the project _id value
+    .btn-edit  (in project)  → click → edit project modal
+    .btn-delete (in project) → click → delete project API call
+
+  PROJECT DETAIL COL
+    #proj-detail-title       → set selected project name
+    #proj-detail-actions     → show/hide based on role
+    #btn-edit-project        → click → edit project
+    #btn-delete-project      → click → delete project
+    #proj-description-text   → set project description
+    #tasks-block             → render .task-row elements inside
+    .task-row                → add class "active" for selected; data-task-id for id
+    .task-checkbox           → add class "checked" for completed tasks
+    .task-row-name           → add class "done" for completed task name
+    #notes-block             → render .note-row elements inside
+    #btn-add-comment         → remove "disabled" attr if admin; else keep disabled
+    #admin-only-msg          → add class "show" if not admin
+
+  TASK DETAIL COL
+    #task-detail-name        → set selected task title
+    #task-detail-actions     → show/hide based on role
+    #btn-edit-task           → click → edit task
+    #btn-delete-task         → click → delete task
+    #task-description-text   → set task description
+    #subtasks-block          → render .subtask-row elements inside
+    .subtask-checkbox        → add class "checked"; click → toggle + PUT API
+    .subtask-name            → add class "done" for completed
+-->
+  <script src="index.js"></script>
+</body>
+
+</html>
