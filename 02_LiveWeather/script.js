@@ -46,10 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
         errorMessage.classList.add('hidden')
         const {name, main, weather} = weatherData
         citydisplay.textContent = name 
-        temp_display.textContent = `Temperature: ${main.temp}`
+        temp_display.textContent = `Temperature: ${(main.temp-32)*5/9}`
         weatherDiscreption.textContent = `Weather: ${weather[0].description}`
         
     }
+
+    console.log(data)
+    console.log(WeatherInfo)
 
     function showError() {
         //shows error   

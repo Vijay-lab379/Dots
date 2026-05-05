@@ -1,4 +1,5 @@
 import { body } from "express-validator"
+import { AvailabelRole, AvailabelTaskStatusEnum } from "../utils/constants.js"
 
 const userRegisterValidator = () => {
     return [
@@ -48,15 +49,92 @@ const userChangeCurrentPasswordValidator = () => {
 const userForgotPasswordValidator = () => {
     return [
         body("email").trim()
-        .notEmpty().withMessage("Email is required")
-        .isEmail().withMessage("Email is Invalid")
+            .notEmpty().withMessage("Email is required")
+            .isEmail().withMessage("Email is Invalid")
     ]
 }
 
 const userResetForgotPassword = () => {
     return [
         body("newPassword").trim()
-        .notEmpty().withMessage("New Password is required")
+            .notEmpty().withMessage("New Password is required")
     ]
 }
-export { userRegisterValidator, userLoginValidator, userChangeCurrentPasswordValidator, userForgotPasswordValidator, userResetForgotPassword }
+
+const creatProjectValidator = () => {
+    return [
+        body("name")
+            .notEmpty()
+            .withMessage("Name is required"),
+        body("description")
+            .optional()
+    ]
+}
+
+const addMemberToProjectValidator = () => {
+    return [
+        body("email")
+            .trim()
+            .notEmpty()
+            .withMessage("Email is required")
+            .isEmail()
+            .withMessage("Invalid Email"),
+        body("role")
+            .trim()
+            .notEmpty()
+            .withMessage("Role is required")
+            .isIn(AvailabelRole)
+            .withMessage("Role is Invalid")
+    ]
+}
+
+//task validators
+const createTaskValidator = () => {
+    return [
+        body("title")
+            .trim()
+            .notEmpty()
+            .withMessage("Title is requires"),
+        body("description")
+            .trim()
+            .notEmpty()
+            .withMessage("Description is required"),
+        body("status")
+            .trim()
+            .notEmpty()
+            .withMessage("Status is required")
+            .isIn(AvailabelTaskStatusEnum)
+            .withMessage("Status is Invalid")
+    ]
+}
+
+const createSubtaskValidator = () => {
+    return [
+        body("title")
+            .trim()
+            .notEmpty()
+            .withMessage("Title is required")
+    ]
+}
+
+const createNoteValidator= () => {
+    return [
+        body("content")
+        .trim()
+        .notEmpty()
+        .withMessage("Note Content is required")
+    ]
+}
+
+export {
+    userRegisterValidator,
+    userLoginValidator,
+    userChangeCurrentPasswordValidator,
+    userForgotPasswordValidator,
+    userResetForgotPassword,
+    creatProjectValidator,
+    addMemberToProjectValidator,
+    createTaskValidator,
+    createSubtaskValidator,
+    createNoteValidator
+}

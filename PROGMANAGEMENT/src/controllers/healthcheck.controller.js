@@ -20,6 +20,7 @@ const healthhCheck = async  (req, res, next) => {
 //if you use try catch -> you need to use async-await on each of them
 //try catch is great to handl issues 
 // Avoid using too much of try catch 
+
 const healthCheck = asyncHandler((req, res) => {
     res
         .status(200)

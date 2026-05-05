@@ -340,8 +340,8 @@ const forgotPasswordRequest = asyncHandler(async (req, res) => {
 
 const resetForgotPassword = asyncHandler(async (req, res) => {
     const { resetToken } = req.params
-    const { newPassword } = req.body
-
+    const { newPassword } = req.body  
+    
     let hashedToken = crypto
         .createHash("sha256")
         .update(resetToken)

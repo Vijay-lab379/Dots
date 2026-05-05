@@ -13,7 +13,7 @@ app.use(cookieParser())
 
 //cors configurations 
 app.use(cors({
-  origin: process.env.CORS_ORIGIN?.split(",") || "http://localhost:5173",
+  origin: process.env.CORS_ORIGIN?.split(",") ||"http://127.0.0.1:5500" || "http://localhost:5173",
   credentials: true,
   methods: ["GET", "PUT", "PATCH", "PUSH", "DELETE", "OPTIONS"],
   allowedHeaders: [ "Authorization", "Content-Type"]
@@ -22,9 +22,15 @@ app.use(cors({
 //import the routes
 import healthhCheckRouter from "./routes/healthcheck.route.js"
 import authRouter from "./routes/auth.route.js"
+import projectRouter from "./routes/project.route.js"
+import taskRouter from "./routes/task.routes.js"
+import noteRouter from "./routes/note.route.js"
 
 app.use("/api/v1/healthcheck", healthhCheckRouter)
+app.use("/api/v1/projects", projectRouter)
 app.use("/api/v1/auth", authRouter)
+app.use("/api/v1/tasks", taskRouter)
+app.use("/api/v1/notes", noteRouter)
 
 app.get('/', (req, res) => {
   res.send('This is my server Respose to  World!')
