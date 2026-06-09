@@ -1,11 +1,20 @@
 /*NOW -
   logout fn -> final permision.
   Edit -Delete & Add logic -> needs custom forms
-    -> Task - name, description, attachments, status, assignedTo
-    -> subtask -name, description, assignedTo,
-    -> project -name, descreption,
-    -> proj. member - user( id/email), role.
+  - Task - name, description, attachments, status, assignedTo
+  - subtask -name, description, assignedTo,
+  - project -name, descreption,
+  - proj. member - user( id/email), role.
 */
+
+/* What issues I encountered??
+  Actually I'm offline! and checking dashboard.
+  - Opened Task is shown ->even when there is no Opened Project shown !!
+  - when I clicked logout -> it vanished all user -> and left default system
+  - the default Project was admin -> allowed comment is obvious
+  - But when I clicked one of the project -> even comment disabled is not shown!!
+  - Sync btn -> showed upToDate first -> then Unable to load task and notes msg
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const server = 'http://localhost:8000/api/v1'
     const paths = {
@@ -123,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // 'user-id-2': {},
     ]); //'Active-User' Ref -for 'Sync' and 'dashboard render'
-
     let Projects = safeLoad('ProjectList', [])
     let Notes = safeLoad('NoteList', []);
     let Tasks = safeLoad('TaskList', []);
@@ -162,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     let Actives = safeLoad('SelectedItems', { ...defaults, accessToken: "", refreshToken: "" }); //Active User, Project and Task -> Deteals - name, id, description 
-    
+
     //Intial User dashboard load
     loginUser();
     (() => {
@@ -180,11 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
         AuthTitle.innerText = "Register"; submitBtn.innerText = "Register";
         NameInput.classList.add('show'); ShowAuthFrom()
     })
-    logoutBtn.addEventListener('click',()=>{
+    logoutBtn.addEventListener('click', () => {
         const user = requestAPI(paths.logout)
-        if(!user) {messageDisplay('Server is not available Temporarily!');return}
-        messageDisplay(user.message);
-        Users.shift();saveUsers(); loginUser();
+        if (!user) { messageDisplay('Server is not available Temporarily!'); return }
+        else messageDisplay(`${user?.message}`); Users.shift(); saveUsers(); loginUser();
     })
     function ShowAuthFrom() { BGoverlay.classList.add('open'); AuthPage.classList.add('open'); submitBtn.addEventListener('click', handleSubmit) };
     closeFormBtn.addEventListener('click', () => {
@@ -295,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Actives = { ...defaults, accessToken: at, refreshToken: rt }; saveActives();
         SyncDashboard();
     }
+
     async function SyncDashboard() {
         SyncBtn.classList.add('spinning');
         getProjects()
@@ -304,8 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Subtasks = []; saveSubtasks(); renderTask();
             SyncBtn.classList.remove('spinning'); messageDisplay("This project is deleted!");
             return
-        }
-        getProjectNotes(); getProjectTasks();
+        } getProjectTasks(); getProjectNotes();
         if (!Tasks.find(task => task._id === Actives.Task._id)) {
             Actives = { ...Actives, Task: defaults.Task }; saveActives()
             Subtasks = []; saveSubtasks(); renderTask();
