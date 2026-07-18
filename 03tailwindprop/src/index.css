@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+img {
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+#img {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}

@@ -1,0 +1,20 @@
+* {
+     padding: 0;
+     margin: 10;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ body {
+     width: 100vh;
+     height: 100vh;
+     color: rgb(249, 240, 240);
+     background-color: rgb(44, 44, 44);
+     align-content: center;
+     justify-self: center;
+ }
+
+ button {
+     border-radius: 10px;
+     padding: 10px;
+ }
